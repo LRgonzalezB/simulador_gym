@@ -12,9 +12,9 @@ alert(`tu IMC es: ${resultadoIMC.toFixed(2)}`)
 
 if (resultadoIMC >= 30) {
     alert("debes buscar ayuda tienes obesidad")
-} else if (resultadoIMC <= 29.9) {
+} else if (resultadoIMC >= 25 && resultadoIMC <= 29.9) {
     alert("ten cuidado ya tienes sobre peso")
-} else if (resultadoIMC <= 24.9) {
+} else if (resultadoIMC >= 18.5 && resultadoIMC <= 24.9) {
     alert("tu peso es normal, sigue asi!!")
 } else {
     alert("tu peso esta por debajo de lo recomendado. Acude con tu medico.")
