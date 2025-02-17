@@ -1,7 +1,38 @@
-alert("Bienvenido, ingrese sus datos para calcular su grasa corporal:");
 
-let weight = parseFloat(prompt("Ingrese su peso en kg"));
-let size = parseFloat(prompt("Ingrese su estatura en metros"));
+let beginning;
+
+do {
+
+    beginning = prompt("Hola, este programa te ayuda a medir tu indice de masa cooporal si deseas continuar responde si").toLowerCase()
+
+    if (beginning !== "si") {
+        alert("gracias, vuelva pronto")
+        break
+    }
+
+    alert("Bienvenido, ingrese sus datos para calcular su grasa corporal:");
+
+    let weight;
+do {
+    weight = parseFloat(prompt("Ingrese su peso en kg"));
+
+    if (isNaN(weight) || weight <= 0) {
+        alert("porfavor ingree su peso en valores validos")
+    }
+ 
+} while (isNaN(weight) || weight <= 0);
+
+let size;
+do {
+     size = parseFloat(prompt("Ingrese su estatura en metros"));
+
+    if (isNaN(size) || size <= 0) {
+        alert("porfavor ingree su estatura en valores validos")
+    }
+} while (isNaN(size) || size <= 0);
+
+
+
 
 let protein = 1.6;
 let carbohydrates = 1;
@@ -28,9 +59,9 @@ alert("Te puedo ayudar con ejercicio y alimentación.");
 let decision = prompt("Responde 'si' o 'no' para continuar").toLowerCase();
 
 if (decision === "si") {
-    let ask = parseInt(prompt("Ingresa cuál es tu objetivo con los números 1, 2, 3 o 4. \n1- Aumentar peso y masa muscular \n2- Mantenerte saludable y activo \n3- Perder peso \n4- Perder peso y hacer ejercicio"));
+    let ask1 = parseInt(prompt("Ingresa cuál es tu objetivo con los números 1, 2, 3 o 4. \n1- Aumentar peso y masa muscular \n2- Mantenerte saludable y activo \n3- Perder peso \n4- Perder peso y hacer ejercicio"));
 
-    switch (ask) {
+    switch (ask1) {
         case 1:
             alert("Aumentamos la ingesta calórica y el ejercicio de fuerza.");
             break;
@@ -58,11 +89,14 @@ const planesNutricionales = [
     { objetivo: "perder peso con ejercicio", proteina: 2, carbohidratos: 2 },
 ];
 
-let ask = parseInt(prompt("Ingresa tu objetivo: \n1- Aumentar masa muscular \n2- Mantenerte saludable \n3- Perder peso \n4- Perder peso con ejercicio"));
+let ask2 = parseInt(prompt("Ingresa tu objetivo para la recomendacion de alimentacion diaria: \n1- Aumentar masa muscular \n2- Mantenerte saludable \n3- Perder peso \n4- Perder peso con ejercicio"));
 
-if (ask >= 1 && ask <= 4) {
-    let plan = planesNutricionales[ask - 1];
-    alert(`Para ${plan.objetivo}, debes consumir ${proteinPerDay(weight, plan.proteina).toFixed(2)}g de proteína y ${carbPerDay(weight, plan.carbohidratos).toFixed(2)}g de carbohidratos.`);
+if (ask2 >= 1 && ask2 <= 4) {
+    let plan = planesNutricionales[ask2 - 1];
+    alert(`Para ${plan.objetivo}, debes consumir ${proteinPerDay(weight, plan.proteina).toFixed(2)}g de proteína util y ${carbPerDay(weight, plan.carbohidratos).toFixed(2)}g de carbohidratos.`);
 } else {
     alert("Opción no válida.");
 }
+
+} while (beginning === "si");
+
