@@ -1,102 +1,94 @@
 
-let beginning;
-
-do {
-
-    beginning = prompt("Hola, este programa te ayuda a medir tu indice de masa cooporal si deseas continuar responde si").toLowerCase()
-
-    if (beginning !== "si") {
-        alert("gracias, vuelva pronto")
-        break
-    }
-
-    alert("Bienvenido, ingrese sus datos para calcular su grasa corporal:");
-
-    let weight;
-do {
-    weight = parseFloat(prompt("Ingrese su peso en kg"));
-
-    if (isNaN(weight) || weight <= 0) {
-        alert("porfavor ingree su peso en valores validos")
-    }
- 
-} while (isNaN(weight) || weight <= 0);
-
-let size;
-do {
-     size = parseFloat(prompt("Ingrese su estatura en metros"));
-
-    if (isNaN(size) || size <= 0) {
-        alert("porfavor ingree su estatura en valores validos")
-    }
-} while (isNaN(size) || size <= 0);
-
-
-
-
-let protein = 1.6;
-let carbohydrates = 1;
-
 const imc = (a, b) => a / (b ** 2);
 const proteinPerDay = (a, b) => a * b;
 const carbPerDay = (a, b) => a * b;
 
-let resultadoIMC = imc(weight, size);
+let protein = 1.6;
+let carbohydrates = 1;
 
-alert(`Tu IMC es: ${resultadoIMC.toFixed(2)}`);
 
-if (resultadoIMC >= 30) {
-    alert("Debes buscar ayuda, tienes obesidad.");
-} else if (resultadoIMC >= 25 && resultadoIMC <= 29.9) {
-    alert("Ten cuidado, ya tienes sobrepeso.");
-} else if (resultadoIMC >= 18.5 && resultadoIMC <= 24.9) {
-    alert("Tu peso es normal, ¡sigue así!");
-} else {
-    alert("Tu peso está por debajo de lo recomendado. Acude con tu médico.");
-}
+// funcion para las preguntas
 
-alert("Te puedo ayudar con ejercicio y alimentación.");
-let decision = prompt("Responde 'si' o 'no' para continuar").toLowerCase();
 
-if (decision === "si") {
-    let ask1 = parseInt(prompt("Ingresa cuál es tu objetivo con los números 1, 2, 3 o 4. \n1- Aumentar peso y masa muscular \n2- Mantenerte saludable y activo \n3- Perder peso \n4- Perder peso y hacer ejercicio"));
+    function requestNumber(message) {
+        let num;
+        do {
+            num = parseFloat(prompt(message));
+            if (isNaN(num) || num < 0) {
+                alert("Por favor, ingrese un valor válido.");
+            }
+        } while (isNaN(num) || num < 0);
+        return num;
+    }
 
-    switch (ask1) {
-        case 1:
-            alert("Aumentamos la ingesta calórica y el ejercicio de fuerza.");
+
+// funcion que calcula el imc
+
+function calcImc() {
+    let weight = requestNumber("ingrese su peso en kg")
+    let size = requestNumber("ingrese su tamaño en metros")
+    let resultImc = imc(weight, size)
+
+    alert(`tu IMC es: ${resultImc.toFixed(2)}`)
+
+    switch (true) {
+        case (resultImc >= 30):
+            alert("Debes buscar ayuda, tienes obesidad.");
             break;
-        case 2:
-            alert("Mantenemos el consumo de alimentos actual y el ejercicio.");
+        case (resultImc >= 25):
+            alert("Ten cuidado, ya tienes sobrepeso.");
             break;
-        case 3:
-            alert("Disminuimos la cantidad de calorías diarias y mantenemos la cantidad de ejercicio actual.");
-            break;
-        case 4:
-            alert("Dieta estricta y ejercicio diario.");
+        case (resultImc >= 18.5):
+            alert("Tu peso es normal, ¡sigue así!");
             break;
         default:
-            alert("Opción no válida.");
+            alert("Tu peso está por debajo de lo recomendado. Acude con tu médico.");
             break;
     }
-} else {
-    alert("Gracias, vuelva pronto.");
+
+    return { weight, imc: resultImc }
 }
 
-const planesNutricionales = [
-    { objetivo: "aumentar masa muscular", proteina: 2, carbohidratos: 4 },
-    { objetivo: "mantenerse saludable", proteina: 1.6, carbohidratos: 2.5 },
-    { objetivo: "perder peso", proteina: 1.8, carbohidratos: 1.5 },
-    { objetivo: "perder peso con ejercicio", proteina: 2, carbohidratos: 2 },
-];
+function recommendNutricionalPlan(weight) {
+    const planesNutricionales = [
+        { objetivo: "aumentar masa muscular", proteina: 2, carbohidratos: 4 },
+        { objetivo: "mantenerse saludable", proteina: 1.6, carbohidratos: 2.5 },
+        { objetivo: "perder peso", proteina: 1.8, carbohidratos: 1.5 },
+        { objetivo: "perder peso con ejercicio", proteina: 2, carbohidratos: 2 },
+    ];
+    let opcion = parseInt(prompt(
+        "Elige tu objetivo:\n1- Aumentar masa muscular\n2- Mantenerte saludable\n3- Perder peso\n4- Perder peso con ejercicio"));
+   
+        if (opcion >= 1 && opcion <= 4) {
 
-let ask2 = parseInt(prompt("Ingresa tu objetivo para la recomendacion de alimentacion diaria: \n1- Aumentar masa muscular \n2- Mantenerte saludable \n3- Perder peso \n4- Perder peso con ejercicio"));
-
-if (ask2 >= 1 && ask2 <= 4) {
-    let plan = planesNutricionales[ask2 - 1];
-    alert(`Para ${plan.objetivo}, debes consumir ${proteinPerDay(weight, plan.proteina).toFixed(2)}g de proteína util y ${carbPerDay(weight, plan.carbohidratos).toFixed(2)}g de carbohidratos.`);
-} else {
-    alert("Opción no válida.");
+        let plan = planesNutricionales[opcion - 1]
+        alert(`${plan.objetivo} debes consumir ${proteinPerDay(weight, plan.proteina).toFixed(2)}g de proteina` + `y ${carbPerDay(weight, plan.carbohidratos).toFixed(2)}g de carbohidratospor dia.`)
+    } else {
+        alert("opcion no valida")
+    }
 }
 
-} while (beginning === "si");
+do {
+let opening = prompt("te puedo ayudar con el calculo de tu imc (si/no)").toLowerCase()
+
+    if (opening !== "si"){
+        alert("gracias vuelva pronto")
+        break
+    }
+
+    let {weight} = calcImc()
+
+    let decicion = prompt("te gustaria recibir recomendaciones de alimentacion? (si/no)").toLowerCase()
+
+    if (decicion === "si") {
+        recommendNutricionalPlan(weight)
+    }else{
+        alert("gracias vuelva pronto")
+    }
+
+} while (true);
+
+
+
+
 
