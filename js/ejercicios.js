@@ -38,8 +38,14 @@ const ejerciciosGym = [
     { id: 32, nombre: "Elevación de piernas colgado", musculo: "Core", maquina: "Barras de dominadas o máquina de elevación de piernas", imagen:"/imagenes/imagenes_ejercicios/core/Elevación de piernas colgado.jpg" }
   ];
   
+  let exerciseSelect = []
+
+  const input = document.getElementById("ingresar_ejercicios");
+  const btn = document.getElementById("buscar");
+  const list = document.getElementById("lista_de_ejercicios")
+  const ejercicios = document.getElementById("ejercicios");
   
-    let ejercicios = document.getElementById("ejercicios")
+    
     
     ejerciciosGym.forEach((ejerciciogym) =>{
       let card = document.createElement("div")
@@ -51,3 +57,49 @@ const ejerciciosGym = [
   
       ejercicios.appendChild(card)
     })
+
+btn.addEventListener("click", () =>{
+  const buscarEjercicios = ejerciciosGym.find((buscarEjercicio) => buscarEjercicio.nombre.toLowerCase() === input.value.toLowerCase()) 
+  if (buscarEjercicios) {
+    exerciseSelect.push(buscarEjercicios)
+    let nuevoEjercicio = document.createElement("div");
+    nuevoEjercicio.classList.add("tarea");
+
+    let texto = document.createElement("p");
+    texto.innerText = buscarEjercicios.nombre;
+     nuevoEjercicio.appendChild(texto);
+    let iconos = document.createElement("div");
+    iconos.classList.add("iconos");
+    nuevoEjercicio.appendChild(iconos);
+
+    let completar = document.createElement("i");
+    completar.classList.add("bi", "bi-check-circle-fill", "icono-completar");
+    completar.addEventListener("click", completarTarea);
+
+    let eliminar = document.createElement("i");
+    eliminar.classList.add("bi", "bi-trash3-fill", "icono-eliminar")
+    eliminar.addEventListener("click", eliminarTarea);
+
+    iconos.append(completar, eliminar)
+
+    list.appendChild(nuevoEjercicio)
+
+  }
+    
+  
+
+  function completarTarea(e) {
+    let tarea = e.target.parentNode.parentNode;
+    tarea.classList.toggle("completada");
+  }
+
+
+  function eliminarTarea(e) {
+    let tarea = e.target.parentNode.parentNode;
+    tarea.remove();
+  }
+});
+
+
+
+

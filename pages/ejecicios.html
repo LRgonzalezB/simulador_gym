@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="/js/ejercicios.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/css/ejercicios.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/style.css">
     <title>ejercicios🏋</title>
 </head>
+
 <body>
     <header class="header">
         <div class="logo">
@@ -23,11 +26,24 @@
         <a href="" class="btn"><button>contacto</button></a>
     </header>
 
-    <main>
-        <div class="conainer_gym" 
-        id="ejercicios">
+    <main class="main">
 
-        </div>
+            <div class="container_list">
+                <h1>Mis ejercicios</h1>
+                <input id="ingresar_ejercicios" placeholder="Buscar ejercicios">
+                <button class="btn_buscar" id="buscar" type="submit">Buscar</button>
+
+                <div id="lista_de_ejercicios">
+
+                </div>
+
+
+            </div>
+     
+            <div class="conainer_gym" id="ejercicios"> </div>
+        
+
     </main>
 </body>
+
 </html>
