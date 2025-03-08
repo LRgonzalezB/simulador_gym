@@ -68,6 +68,7 @@ btn.addEventListener("click", () =>{
     let texto = document.createElement("p");
     texto.innerText = buscarEjercicios.nombre;
      nuevoEjercicio.appendChild(texto);
+     
     let iconos = document.createElement("div");
     iconos.classList.add("iconos");
     nuevoEjercicio.appendChild(iconos);
@@ -99,6 +100,11 @@ btn.addEventListener("click", () =>{
     tarea.remove();
   }
 });
+
+const btnGuardar = document.getElementById("btn_storage")
+btnGuardar.addEventListener("click", () =>{
+  localStorage.setItem("exerciseStorage", JSON.stringify(exerciseSelect))
+})
 
 
 
