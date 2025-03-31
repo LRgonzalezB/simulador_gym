@@ -56,13 +56,7 @@ nuevoEjercicio.innerHTML = `<p>${buscarEjercicios.nombre} </p>`;
     list.appendChild(nuevoEjercicio)
 
   }
-
-  
 })
-
-
-
-
 
     let ejerciciosStorage = JSON.parse(localStorage.getItem("exerciseStorage")) || [];
     const btnGuardar = document.getElementById("btn_storage");
