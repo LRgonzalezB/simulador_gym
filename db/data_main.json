@@ -1,6 +1,6 @@
 [
-    { "objetivo": "aumentar masa muscular", "proteina": 2, "carbohidratos": 4, "min_imc":0 , "max_imc":18, "message": "Tu peso es normal, ¡sigue así!" }, 
-    { "objetivo": "mantenerse saludable", "proteina": 1.6, "carbohidratos": 2.5, "min_imc":19 , "max_imc":24, "message": "Tu peso es normal, ¡sigue así!" },
-    { "objetivo": "perder peso", "proteina": 1.8, "carbohidratos": 1.5, "min_imc":25 , "max_imc":29, "message": "Ten cuidado, ya tienes sobrepeso."  },
-    { "objetivo": "perder peso con ejercicio", "proteina": 2, "carbohidratos": 2, "min_imc":30 , "max_imc":50, "message": "Debes buscar ayuda, tienes obesidad." }
+    { "objetivo": "aumentar masa muscular", "proteina": 2, "carbohidratos": 4, "min_imc":0 , "max_imc":18.9, "message": "Tu peso es normal, ¡sigue así!" }, 
+    { "objetivo": "mantenerse saludable", "proteina": 1.6, "carbohidratos": 2.5, "min_imc":19 , "max_imc":24.9, "message": "Tu peso es normal, ¡sigue así!" },
+    { "objetivo": "perder peso", "proteina": 1.8, "carbohidratos": 1.5, "min_imc":25 , "max_imc":29.9, "message": "Ten cuidado, ya tienes sobrepeso."  },
+    { "objetivo": "perder peso con ejercicio", "proteina": 2, "carbohidratos": 2, "min_imc":30 , "max_imc":50.9, "message": "Debes buscar ayuda, tienes obesidad." }
 ]
